@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Height="600" Width="400"
-        Title="AidWindow" ShowInTaskbar="False" WindowStartupLocation="Manual"
+        Title="快捷窗口" ShowInTaskbar="False" WindowStartupLocation="Manual"
         AllowsTransparency="True" Opacity="0.5" Background="Transparent"
         WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown">
 

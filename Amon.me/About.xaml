@@ -13,9 +13,9 @@
                 <ImageBrush ImageSource="Images/About.png" Stretch="None" AlignmentX="Left" AlignmentY="Top"/>
             </Border.Background>
         </Border>
-        <Grid HorizontalAlignment="Stretch" Margin="130,10,10,10">
+        <Grid HorizontalAlignment="Stretch" Margin="130,10,10,10" Background="White">
             <TextBlock HorizontalAlignment="Stretch" Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="80">
-            Amon.me 文件整理工具！
+            Amon.me是一款小巧的文件管理工具，其支持文件拖拽分组、多设备文件同步、文件去重等多项功能。
             </TextBlock>
 
             <Label x:Name="LtVer" Content="版本：" HorizontalAlignment="Left" Margin="10,0,0,93" VerticalAlignment="Bottom"/>
