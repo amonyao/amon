@@ -50,16 +50,24 @@ namespace Me.Amon.Dao
             var command = new SQLiteCommand();
             command.CommandType = CommandType.Text;
             command.Connection = _Connection;
+            var sql = "";
             foreach (var line in lines)
             {
-                var sql = line.Trim();
-                if (string.IsNullOrWhiteSpace(sql) || sql.StartsWith("/*") || sql.StartsWith("//"))
+                var tmp = line.Trim();
+                if (string.IsNullOrWhiteSpace(tmp) || tmp.StartsWith("/*") || tmp.StartsWith("//"))
                 {
+                    sql = "";
                     continue;
                 }
 
-                command.CommandText = sql;
-                command.ExecuteNonQuery();
+                sql += " " + tmp;
+
+                if (tmp.EndsWith(";"))
+                {
+                    command.CommandText = sql.Substring(0, sql.Length - 1);
+                    command.ExecuteNonQuery();
+                    sql = "";
+                }
             }
         }
 
