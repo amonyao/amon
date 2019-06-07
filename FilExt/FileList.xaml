@@ -1,0 +1,56 @@
+﻿<Window x:Class="Me.Amon.FilExt.FileList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="文件清单" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <DataTemplate x:Key="listBoxTemplate">
+            <StackPanel Margin="4">
+                <DockPanel>
+                    <TextBlock Text="{Binding name}" Foreground="Green" FontWeight="Bold"/>
+                </DockPanel>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid Margin="10,10,10,50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="200"></ColumnDefinition>
+                <ColumnDefinition Width="200" MinWidth="120"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Border Margin="0,0,5,0"  Grid.Row="0" Grid.Column="0">
+                <DataGrid x:Name="DgList" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" SelectionChanged="DgList_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="来源" Width="140" Binding="{Binding SrcName}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="规则" Width="100" Binding="{Binding RuleName}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="目标" Width="100*" Binding="{Binding DstName}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="结果" Width="80" Binding="{Binding Reason}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+
+            <GridSplitter Width="3"></GridSplitter>
+
+            <Border Margin="5,0,0,0" Grid.Row="0" Grid.Column="1">
+                <Grid>
+                    <TextBlock x:Name="LtSrc" Text="来源" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="LcSrc" Margin="50,10,10,0" VerticalAlignment="Top"/>
+
+                    <TextBlock x:Name="LtDst" Text="目标" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="LcDst" Margin="50,40,10,0" VerticalAlignment="Top"/>
+
+                    <TextBlock x:Name="LtRule" Text="规则" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
+                    <ListBox x:Name="LbRule" Margin="10,100,10,10" SelectionChanged="LbRule_SelectionChanged" ItemTemplate="{DynamicResource listBoxTemplate}"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Button x:Name="BtAccept" Content="开始" Click="BtAccept_Click" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75"/>
+    </Grid>
+</Window>

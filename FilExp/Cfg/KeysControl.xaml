@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Me.Amon.FilExp.Cfg.KeysControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             d:DesignHeight="320" d:DesignWidth="490">
+    <Grid>
+        <TextBlock x:Name="MyTips" Margin="10,10,10,10" Text="系统支持的快捷键" VerticalAlignment="Top"/>
+        <DataGrid x:Name="MyGrid" Margin="10,30,10,10" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="键" Width="120" Binding="{Binding Action}"></DataGridTextColumn>
+                <DataGridTextColumn Header="说明" Width="*" Binding="{Binding Remark}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

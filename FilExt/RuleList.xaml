@@ -1,0 +1,25 @@
+﻿<Window x:Class="Me.Amon.FilExt.RuleList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+         Height="450" Width="800"
+        Title="规则清单" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="10,10,10,50">
+            <DataGrid x:Name="DgList" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="名称" Width="120" Binding="{Binding name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="操作" Width="80" Binding="{Binding method_name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="来源" Width="80*" Binding="{Binding src_file}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="目标" Width="80*" Binding="{Binding dst_path}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="去重" Width="80" Binding="{Binding repeat_name}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+        <Button x:Name="BtAppend" Content="新增" Click="BtAppend_Click" HorizontalAlignment="Right" Margin="0,0,180,10" VerticalAlignment="Bottom" Width="75"/>
+        <Button x:Name="BtUpdate" Content="更新" Click="BtUpdate_Click" HorizontalAlignment="Right" Margin="0,0,95,10" VerticalAlignment="Bottom" Width="75"/>
+        <Button x:Name="BtDelete" Content="删除" Click="BtDelete_Click" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Style="{StaticResource MaterialDesignRaisedLightButton}"/>
+    </Grid>
+</Window>

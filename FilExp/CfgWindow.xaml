@@ -1,0 +1,28 @@
+﻿<Window x:Class="Me.Amon.FilExp.CfgWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Cfg="clr-namespace:Me.Amon.FilExp.Cfg"
+        mc:Ignorable="d"
+        Title="系统配置" Height="400" Width="600"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button x:Name="BtAccept" Content="确定" Margin="10,5,50,12" Click="BtAccept_Click"></Button>
+        </StackPanel>
+        <DockPanel DockPanel.Dock="Left" Width="102">
+            <ListBox x:Name="LbTab" SelectionChanged="LbTab_SelectionChanged" >
+                <ListBoxItem Tag="base">常用</ListBoxItem>
+                <ListBoxItem Tag="keys">快捷键</ListBoxItem>
+                <ListBoxItem Tag="info">关于</ListBoxItem>
+            </ListBox>
+        </DockPanel>
+        <DockPanel>
+            <Cfg:BaseControl x:Name="UcBase" />
+            <Cfg:KeysControl x:Name="UcKeys" Visibility="Collapsed" />
+            <Cfg:JsonControl x:Name="UcJson" Visibility="Collapsed" />
+            <Cfg:InfoControl x:Name="UcInfo" Visibility="Collapsed" />
+        </DockPanel>
+    </DockPanel>
+</Window>

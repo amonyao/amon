@@ -1,0 +1,82 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dto="clr-namespace:Me.Amon.FilExp.Dto"
+    xmlns:Uc="clr-namespace:Me.Amon.FilExp.Uc"
+    x:Class="Me.Amon.FilExp.Editor.ImageEditor"
+    mc:Ignorable="d" 
+    d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ContextMenu x:Key="MyCatMenu">
+            <MenuItem Header="新增" Tag="append" Click="CatMenuItem_Click"></MenuItem>
+            <MenuItem Header="修改" Tag="update" Click="CatMenuItem_Click"></MenuItem>
+            <MenuItem Header="删除" Tag="remove" Click="CatMenuItem_Click"></MenuItem>
+        </ContextMenu>
+        <ContextMenu x:Key="MyImgMenu">
+            <MenuItem Header="新增" Tag="append" Click="ImgMenuItem_Click"></MenuItem>
+            <MenuItem Header="修改" Tag="update" Click="ImgMenuItem_Click"></MenuItem>
+            <MenuItem Header="删除" Tag="remove" Click="ImgMenuItem_Click"></MenuItem>
+        </ContextMenu>
+        <Style TargetType="{x:Type TreeViewItem}">
+            <Setter Property="Padding" Value="5"/>
+            <EventSetter Event="Control.MouseDoubleClick" Handler="MyCat_MouseDoubleClick" />
+            <EventSetter Event="UIElement.MouseRightButtonUp" Handler="TreeViewItem_MouseRightButtonUp"/>
+            <Setter Property="ContextMenu" Value="{DynamicResource MyCatMenu}"/>
+        </Style>
+        <Style x:Key="MyViewStyle" TargetType="{x:Type ListView}" >
+            <Setter Property="ItemsSource" Value="{Binding DocDto}"/>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Width="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource AncestorType={x:Type ScrollContentPresenter}}}"/>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid Width="200" Height="300" Background="#fafafa">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="270"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Image Source="{Binding ImageSource, IsAsync=True}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding names}" TextWrapping="Wrap" Grid.Row="1" HorizontalAlignment="Center"/>
+                            <Grid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="新增" Tag="append" Click="ImgMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="修改" Tag="update" Click="ImgMenuItem_Click"></MenuItem>
+                                    <MenuItem Header="删除" Tag="remove" Click="ImgMenuItem_Click"></MenuItem>
+                                </ContextMenu>
+                            </Grid.ContextMenu>
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <DockPanel>
+        <DockPanel x:Name="MyCatPanel" DockPanel.Dock="Left" Width="200">
+            <Border BorderThickness="1" Background="#FFFFFF" BorderBrush="LightGray" CornerRadius="5" Margin="3" DockPanel.Dock="Top">
+                <DockPanel Margin="5,3,5,3">
+                    <TextBox x:Name="TbMeta" BorderThickness="0" ToolTip="搜索"></TextBox>
+                </DockPanel>
+            </Border>
+            <TreeView x:Name="MyCat" SelectedItemChanged="MyCat_SelectedItemChanged" ItemsSource="{Binding _Cats}">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type dto:DocDto}" ItemsSource="{Binding CatList}">
+                        <TextBlock Text="{Binding names}" Margin="3 2" />
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </DockPanel>
+        <DockPanel x:Name="MyDatPanel" DockPanel.Dock="Right" Width="200">
+            <Uc:TagEditor x:Name="MyTag"/>
+        </DockPanel>
+        <DockPanel x:Name="MyObjPanel">
+            <ListView x:Name="MyView" Style="{DynamicResource MyViewStyle}" SelectionChanged="MyView_SelectionChanged"/>
+        </DockPanel>
+    </DockPanel>
+</UserControl>

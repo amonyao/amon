@@ -1,0 +1,74 @@
+﻿<Window x:Class="Me.Amon.FilExt.RuleEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+         Height="320" Width="400"
+        Title="规则编辑" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <ContextMenu x:Key="RenameMenu">
+            <MenuItem Header="文件">
+                <MenuItem Header="文件名称"></MenuItem>
+                <MenuItem Header="文件后缀"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="创建时间">
+                <MenuItem Header="年"></MenuItem>
+                <MenuItem Header="月"></MenuItem>
+                <MenuItem Header="日"></MenuItem>
+                <MenuItem Header="时"></MenuItem>
+                <MenuItem Header="分"></MenuItem>
+                <MenuItem Header="秒"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="更新时间">
+                <MenuItem Header="年"></MenuItem>
+                <MenuItem Header="月"></MenuItem>
+                <MenuItem Header="日"></MenuItem>
+                <MenuItem Header="时"></MenuItem>
+                <MenuItem Header="分"></MenuItem>
+                <MenuItem Header="秒"></MenuItem>
+            </MenuItem>
+        </ContextMenu>
+    </Window.Resources>
+    <Grid>
+        <Border Margin="20,20,20,50">
+            <Grid>
+                <TextBlock x:Name="LtName" Margin="0,5,0,0" Text="名称：" Height="27" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="TbName" Margin="65,0,0,0" Height="27" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+                <TextBlock x:Name="LtMethod" Margin="0,35,0,0" Text="操作：" Height="27" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <ComboBox x:Name="CbMethod" Margin="65,30,0,0" Height="27" VerticalAlignment="Top"/>
+
+                <TextBlock x:Name="LtSrcFile" Margin="0,65,0,0" Text="来源文件：" Height="27" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="TbSrcFile" Margin="65,60,0,0" Height="27" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+                <TextBlock x:Name="LtSrcPath" Margin="0,95,0,0" Text="来源路径：" Height="27" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="TbSrcPath" Margin="65,90,30,0" Height="27" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <Button x:Name="BtSrcPath" Click="BtSrcPath_Click" Margin="0,90,0,0" Width="27" Height="27" Padding="0" BorderBrush="Transparent" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <wpf:PackIcon Kind="FolderOpen" Width="24" Height="24" Foreground="Black"/>
+                </Button>
+
+                <TextBlock x:Name="LtDstPath" Margin="0,125,0,0" Text="目标路径：" Height="27" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="TbDstPath" Margin="65,120,30,0" Height="27" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <Button x:Name="BtDstPath" Click="BtDstPath_Click" Margin="0,120,0,0" Width="27" Height="27" Padding="0" BorderBrush="Transparent" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <wpf:PackIcon Kind="FolderOpen" Width="24" Height="24" Foreground="Black"/>
+                </Button>
+
+                <TextBlock x:Name="LtDstFile" Margin="0,155,0,0" Text="目标文件：" Height="27" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="TbDstFile" Margin="65,150,30,0" Height="27" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <Button x:Name="BtDstFile" Margin="0,150,0,0" Width="27" Height="27" Padding="0" BorderBrush="Transparent" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Click="CbDstFile_Click">
+                    <wpf:PackIcon Kind="FolderOpen" Width="24" Height="24" Foreground="Black"/>
+                </Button>
+
+                <TextBlock x:Name="LtRepeat" Margin="0,185,0,0" Text="重名处理：" Height="27" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <ComboBox x:Name="CbRepeat" Margin="65,180,0,0" VerticalAlignment="Top"></ComboBox>
+            </Grid>
+        </Border>
+
+        <TextBlock x:Name="LcError" Margin="20,0,0,10" Text="提示" Height="25" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <Button x:Name="BtUpdate" Content="保存" HorizontalAlignment="Right" Margin="0,0,95,10" VerticalAlignment="Bottom" Width="75" Click="BtUpdate_Click"/>
+        <Button x:Name="BtCancel" Content="取消" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Click="BtCancel_Click" Style="{StaticResource MaterialDesignRaisedLightButton}"/>
+    </Grid>
+</Window>
