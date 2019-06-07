@@ -13,6 +13,16 @@ Amon.me是一款小巧的文件管理工具，其设计的初衷就是为了解�
 
 由于本项目刚刚启动，目前还需要有大量的基础工作需要完善，如果您是编程高手，也希望您能加入本项目，一起完善这个小工具；如果您是电脑达人，很高兴您能关注本软件，并提出您宝贵的意见。
 
+# 软件截图
+软件首页
+![软件首页](https://github.com/amonyao/amon/blob/master/ScreenShots/Main.png)
+
+规则设置
+![规则设置](https://github.com/amonyao/amon/blob/master/ScreenShots/Rule.png)
+
+文件处理
+![文件处理](https://github.com/amonyao/amon/blob/master/ScreenShots/File.png)
+
 # 下载地址
 [在线安装](https://github.com/amonyao/amon/blob/master/Download/Amon.me.exe)
 
