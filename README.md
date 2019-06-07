@@ -24,9 +24,7 @@ Amon.me是一款小巧的文件管理工具，其设计的初衷就是为了解�
 ![文件处理](https://github.com/amonyao/amon/blob/master/ScreenShots/File.png)
 
 # 下载地址
-[在线安装](https://github.com/amonyao/amon/blob/master/Download/Amon.me.exe)
-
-[点击下载](https://github.com/amonyao/amon/blob/master/Download/Amon.me.zip)
+[在线安装](https://github.com/amonyao/amon/blob/master/Download/setup.exe)
 
 # 更新事项
 日期：2019-06-08
