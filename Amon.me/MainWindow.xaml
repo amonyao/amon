@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Height="300" Width="400" ResizeMode="NoResize"
-        Title="FileWindow" ShowInTaskbar="False" Topmost="False"
+        Title="FileWindow" ShowInTaskbar="False" Topmost="True"
         WindowStyle="None" AllowsTransparency="True" Opacity="1" Background="Transparent"
         AllowDrop="True" DragEnter="Window_DragEnter" Drop="Window_Drop"
         MouseLeftButtonDown="Window_MouseLeftButtonDown">

@@ -16,5 +16,27 @@ namespace Me.Amon
         /// </summary>
         /// <param name="key"></param>
         void ShowUserView(string key, Visibility visibility);
+
+        void ShowAppIcon(string icon);
+
+        /// <summary>
+        /// 显示窗口
+        /// </summary>
+        void ShowWindow();
+
+        /// <summary>
+        /// 隐藏窗口
+        /// </summary>
+        void HideWindow();
+
+        /// <summary>
+        /// 关于
+        /// </summary>
+        void ShowAbout();
+
+        /// <summary>
+        /// 系统退出
+        /// </summary>
+        void Exit();
     }
 }

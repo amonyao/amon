@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amon.me", "Amon.me\Amon.me.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilExe", "FilExe\FilExe.csproj", "{7E7A6795-83C7-4F92-A354-5B017B08C052}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tray", "Tray\Tray.csproj", "{15876FB4-2759-4B02-97F9-9D5C26DA26E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7E7A6795-83C7-4F92-A354-5B017B08C052}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E7A6795-83C7-4F92-A354-5B017B08C052}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E7A6795-83C7-4F92-A354-5B017B08C052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15876FB4-2759-4B02-97F9-9D5C26DA26E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15876FB4-2759-4B02-97F9-9D5C26DA26E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15876FB4-2759-4B02-97F9-9D5C26DA26E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15876FB4-2759-4B02-97F9-9D5C26DA26E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

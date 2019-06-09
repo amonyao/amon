@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Me.Amon.Tray;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -30,9 +31,16 @@ namespace Me.Amon
             //_Plugin = new FilExe.Plugin();
             _Plugin.Init(this, _User);
 
+            ShowTray();
+
             ShowSearch(false);
 
             ShowUpgrade();
+        }
+
+        private void ShowTray()
+        {
+            new AmonTray(this, _User);
         }
 
         #region 接口实现
@@ -44,6 +52,39 @@ namespace Me.Amon
         public void ShowUserView(string key, Visibility visibility)
         {
             BdResult.Visibility = Visibility;
+        }
+
+        public void ShowAppIcon(string icon)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ShowWindow()
+        {
+            Show();
+            Activate();
+        }
+
+        public void HideWindow()
+        {
+            Hide();
+        }
+
+        public void ShowAbout()
+        {
+            if (_About == null || !_About.IsVisible)
+            {
+                _About = new About();
+                _About.Init();
+            }
+            _About.Show();
+        }
+        private About _About;
+
+        public void Exit()
+        {
+            Close();
+            Application.Current.Shutdown();
         }
         #endregion
 
@@ -138,14 +179,8 @@ namespace Me.Amon
         /// <param name="e"></param>
         private void MiInfo_Click(object sender, RoutedEventArgs e)
         {
-            if (_About == null || !_About.IsVisible)
-            {
-                _About = new About();
-                _About.Init();
-            }
-            _About.Show();
+            ShowAbout();
         }
-        private About _About;
 
         /// <summary>
         /// 退出
@@ -154,8 +189,7 @@ namespace Me.Amon
         /// <param name="e"></param>
         private void MiExit_Click(object sender, RoutedEventArgs e)
         {
-            Close();
-            Application.Current.Shutdown();
+            Exit();
         }
 
         /// <summary>
@@ -272,6 +306,7 @@ namespace Me.Amon
             _AidWindow.Visibility = visible ? Visibility.Visible : Visibility.Hidden;
             MiAid.IsChecked = visible;
         }
+
         private AidWindow _AidWindow;
     }
 
