@@ -11,11 +11,11 @@ namespace Me.Amon
         /// <summary>
         /// 数据库更新
         /// </summary>
-        public const string UPGRADE_SQL = "Data\\upgrade.sql";
+        public const string UPGRADE_SQL = "Setup\\upgrade.sql";
         /// <summary>
         /// 更新日志
         /// </summary>
-        public const string UPGRADE_LOG = "Data\\upgrade.log";
+        public const string UPGRADE_LOG = "Setup\\upgrade.log";
 
         public Upgrade()
         {

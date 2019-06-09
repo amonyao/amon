@@ -1,0 +1,648 @@
+﻿{
+  "apps": [
+    {
+      "file": "notepad.exe",
+      "path": "%windir%",
+      "tips": "记事本",
+      "os": [ "" ],
+      "keys": [ "notepad", "jishiben" ]
+    },
+    {
+      "file": "regedit.exe",
+      "path": "%windir%",
+      "tips": "注册表编辑器",
+      "os": [ "" ],
+      "keys": [ "regedit", "zhucebiao" ]
+    },
+    {
+      "file": "write.exe",
+      "path": "%windir%",
+      "tips": "写字板",
+      "os": [ "" ],
+      "keys": [ "write", "zieziban" ]
+    },
+    {
+      "file": "explorer.exe",
+      "path": "%windir%",
+      "tips": "资源管理器",
+      "os": [ "" ],
+      "keys": [ "explorer", "ziyuanguanliqi" ]
+    },
+    {
+      "file": "msconfig.exe",
+      "path": "",
+      "tips": "系统配置",
+      "os": [ "" ],
+      "keys": [ "MSConfig", "xitongpeizhi" ]
+    },
+    {
+      "file": "calc.exe",
+      "path": "",
+      "tips": "计算器",
+      "os": [ "" ],
+      "keys": [ "calc", "jisuanqi" ]
+    },
+    {
+      "file": "mstsc.exe",
+      "path": "",
+      "tips": "远程桌面",
+      "os": [ "" ],
+      "keys": [ "mstsc", "yuanchengzhuomian" ]
+    },
+    {
+      "file": "services.msc",
+      "path": "",
+      "tips": "系统服务",
+      "os": [ "" ],
+      "keys": [ "services", "xitongfuwu" ]
+    },
+    {
+      "file": "gpedit.msc",
+      "path": "",
+      "tips": "组策略",
+      "os": [ "" ],
+      "keys": [ "gpedit", "zucelve" ]
+    },
+    {
+      "file": "dcomcnfg.exe",
+      "path": "",
+      "tips": "组件服务",
+      "os": [ "" ],
+      "keys": [ "dcomcnfg", "zujianfuwu" ]
+    },
+    {
+      "file": "devmgmt.msc",
+      "path": "",
+      "tips": "设备管理器",
+      "os": [ "" ],
+      "keys": [ "devmgmt", "shebeiguanliqi" ]
+    },
+    {
+      "file": "cleanmgr.exe",
+      "path": "",
+      "tips": "磁盘清理",
+      "os": [ "" ],
+      "keys": [ "cleanmgr", "cipanqingli" ]
+    },
+    {
+      "file": "compmgmt.msc",
+      "path": "",
+      "tips": "计算机管理",
+      "os": [ "" ],
+      "keys": [ "compmgmt", "jisuanjiguanli" ]
+    },
+    {
+      "file": "secpol.msc",
+      "path": "",
+      "tips": "本地安全策略",
+      "os": [ "" ],
+      "keys": [ "secpol.msc", "bendianquancelue" ]
+    },
+    {
+      "file": "taskmgr.exe",
+      "path": "",
+      "tips": "任务管理器",
+      "os": [ "" ],
+      "keys": [ "taskmgr", "renweuguanliqi" ]
+    },
+    {
+      "file": "mmc.exe",
+      "path": "",
+      "tips": "Microsoft 管理控制台",
+      "os": [ "" ],
+      "keys": [ "mmc", "guanlikongzhitai" ]
+    },
+    {
+      "file": "lusrmgr.msc",
+      "path": "",
+      "tips": "本地用户和组",
+      "os": [ "" ],
+      "keys": [ "lusrmgr", "bendiyonghuhezu" ]
+    },
+    {
+      "file": "dvdplay.exe",
+      "path": "",
+      "tips": "",
+      "os": [ "DVD播放器" ],
+      "keys": [ "dvdplay", "dvdbofangqi" ]
+    },
+    {
+      "file": "diskmgmt.msc",
+      "path": "",
+      "tips": "磁盘管理",
+      "os": [ "" ],
+      "keys": [ "diskmgmt.msc", "cipanguanli" ]
+    },
+    {
+      "file": "dxdiag.exe",
+      "path": "",
+      "tips": "DirectX诊断工具",
+      "os": [ "" ],
+      "keys": [ "dxdiag", "directx" ]
+    },
+    {
+      "file": "perfmon.msc",
+      "path": "",
+      "tips": "性能监视器",
+      "os": [ "" ],
+      "keys": [ "perfmon", "xingnengjianshiqi" ]
+    },
+    {
+      "file": "winver.exe",
+      "path": "",
+      "tips": "关于Windows",
+      "os": [ "" ],
+      "keys": [ "winver", "windows" ]
+    },
+    {
+      "file": "mspaint.exe",
+      "path": "",
+      "tips": "画图",
+      "os": [ "" ],
+      "keys": [ "mspaint", "huatu" ]
+    },
+    {
+      "file": "magnify.exe",
+      "path": "",
+      "tips": "放大镜",
+      "os": [ "" ],
+      "keys": [ "magnify", "fangdajing" ]
+    },
+    {
+      "file": "osk.exe",
+      "path": "",
+      "tips": "屏幕键盘",
+      "os": [ "" ],
+      "keys": [ "osk", "pingmujianpan" ]
+    },
+    {
+      "file": "odbcad32.exe",
+      "path": "",
+      "tips": "ODBC数据源管理程序",
+      "os": [ "" ],
+      "keys": [ "odbcad32", "odbcad", "odbcshujuyuanguanli" ]
+    },
+    {
+      "file": "sndvol.exe",
+      "path": "",
+      "tips": "音量控制",
+      "os": [ "" ],
+      "keys": [ "sndvol", "yinliangkongzhi" ]
+    },
+    {
+      "file": "eventvwr.exe",
+      "path": "",
+      "tips": "事件查看器",
+      "os": [ "" ],
+      "keys": [ "eventvwr", "事件查看器" ]
+    },
+    {
+      "file": "certmgr.msc",
+      "path": "",
+      "tips": "证书管理",
+      "os": [ "" ],
+      "keys": [ "certmgr", "zhengshuguanli" ]
+    },
+    {
+      "file": "gpedit.msc",
+      "path": "",
+      "tips": "组策略",
+      "os": [ "" ],
+      "keys": [ "gpedit", "zucelue" ]
+    },
+    {
+      "file": "charmap.exe",
+      "path": "",
+      "tips": "字符映射表",
+      "os": [ "" ],
+      "keys": [ "charmap", "zifuyingshe" ]
+    },
+    {
+      "file": "mstsc.exe",
+      "path": "",
+      "tips": "远程桌面连接",
+      "os": [ "" ],
+      "keys": [ "mstsc", "yuanchengzhuomianliangjie" ]
+    },
+    {
+      "file": "narrator.exe",
+      "path": "",
+      "tips": "讲述人",
+      "os": [ "" ],
+      "keys": [ "narrator", "jiangshuren" ]
+    },
+    {
+      "file": "cmd.exe",
+      "path": "",
+      "tips": "命令提示符",
+      "os": [ "" ],
+      "keys": [ "cmd", "mingling" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    },
+    {
+      "file": "",
+      "path": "",
+      "tips": "",
+      "os": [ "" ],
+      "keys": [ "", "" ]
+    }
+  ]
+}

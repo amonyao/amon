@@ -6,7 +6,9 @@
         mc:Ignorable="d"
         Title="升级详情" Height="260" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <TextBlock x:Name="TbInfo" Margin="10,10,10,47"></TextBlock>
+        <ScrollViewer Margin="10,10,10,47" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+            <TextBlock x:Name="TbInfo" TextWrapping="Wrap"></TextBlock>
+        </ScrollViewer>
         <Button x:Name="BtAccept" Click="BtAccept_Click" Content="确定" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75"/>
     </Grid>
 </Window>

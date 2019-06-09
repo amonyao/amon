@@ -6,6 +6,7 @@
         mc:Ignorable="d"
          Height="450" Width="800"
         Title="规则清单" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+
     <Grid>
         <Border BorderBrush="Black" BorderThickness="1" Margin="10,10,10,50">
             <DataGrid x:Name="DgList" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">

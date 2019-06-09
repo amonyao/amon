@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Reflection;
+using System.Windows;
 
 namespace Me.Amon
 {
@@ -10,6 +11,12 @@ namespace Me.Amon
         public About()
         {
             InitializeComponent();
+        }
+
+        public void Init()
+        {
+            var assembly = Assembly.GetExecutingAssembly().GetName();
+            LcVer.Content = assembly.Version.ToString();
         }
 
         private void BtAccept_Click(object sender, RoutedEventArgs e)

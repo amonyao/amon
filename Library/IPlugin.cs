@@ -5,12 +5,12 @@
         /// <summary>
         /// 初始化
         /// </summary>
-        void Init(MainForm form, UserInfo user);
+        void Init(IMainForm form, IUserInfo user);
 
         /// <summary>
         /// 输入过程
         /// </summary>
-        void Input();
+        void Input(params string[] args);
 
         /// <summary>
         /// 输入确认

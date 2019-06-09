@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilExt", "FilExt\FilExt.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amon.me", "Amon.me\Amon.me.csproj", "{41EE630B-4B9A-4688-99A6-DC853134D2E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilExe", "FilExe\FilExe.csproj", "{7E7A6795-83C7-4F92-A354-5B017B08C052}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{41EE630B-4B9A-4688-99A6-DC853134D2E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41EE630B-4B9A-4688-99A6-DC853134D2E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41EE630B-4B9A-4688-99A6-DC853134D2E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E7A6795-83C7-4F92-A354-5B017B08C052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E7A6795-83C7-4F92-A354-5B017B08C052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E7A6795-83C7-4F92-A354-5B017B08C052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E7A6795-83C7-4F92-A354-5B017B08C052}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

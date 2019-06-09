@@ -39,7 +39,7 @@ namespace Me.Amon.Dao
         /// </summary>
         private void InitDb()
         {
-            var file = "Data\\Init.sql";
+            var file = "Setup\\Init.sql";
             if (!File.Exists(file))
             {
                 return;

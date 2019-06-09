@@ -4,22 +4,27 @@ namespace Me.Amon.FilExt
 {
     public class Plugin : IPlugin
     {
-        private MainForm _Main;
-        private UserInfo _User;
+        private IMainForm _Main;
+        private IUserInfo _User;
 
         #region 接口实现
-        public void Init(MainForm form, UserInfo user)
+        public void Init(IMainForm form, IUserInfo user)
         {
             _Main = form;
             _User = user;
         }
 
-        public void Input()
+        public void Input(params string[] args)
         {
         }
 
         public void Enter(params string[] args)
         {
+            if (args == null || args.Length < 1)
+            {
+                return;
+            }
+
             var rules = new RuleDao().List<RuleDto>(null);
             if (rules == null)
             {

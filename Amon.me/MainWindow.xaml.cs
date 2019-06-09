@@ -1,6 +1,6 @@
-﻿using Me.Amon.FilExt;
-using System.IO;
+﻿using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -9,8 +9,9 @@ namespace Me.Amon
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window, MainForm
+    public partial class MainWindow : Window, IMainForm
     {
+        private IUserInfo _User;
         private IPlugin _Plugin;
 
         public MainWindow()
@@ -23,7 +24,11 @@ namespace Me.Amon
             Left = SystemParameters.PrimaryScreenWidth / 2;
             Top = 0;
 
-            _Plugin = new Plugin();
+            _User = new Ur.UserInfo();
+
+            _Plugin = new FilExt.Plugin();
+            //_Plugin = new FilExe.Plugin();
+            _Plugin.Init(this, _User);
 
             ShowSearch(false);
 
@@ -31,9 +36,14 @@ namespace Me.Amon
         }
 
         #region 接口实现
-        public void Register(IPlugin plugin)
+        public void AddUserView(UserControl control)
         {
+            BdResult.Child = control;
+        }
 
+        public void ShowUserView(string key, Visibility visibility)
+        {
+            BdResult.Visibility = Visibility;
         }
         #endregion
 
@@ -95,7 +105,7 @@ namespace Me.Amon
 
         private void MiRule_Click(object sender, RoutedEventArgs e)
         {
-            var window = new RuleList();
+            var window = new FilExt.RuleList();
             window.Init();
             window.Show();
         }
@@ -131,6 +141,7 @@ namespace Me.Amon
             if (_About == null || !_About.IsVisible)
             {
                 _About = new About();
+                _About.Init();
             }
             _About.Show();
         }
@@ -165,7 +176,38 @@ namespace Me.Amon
         /// <param name="e"></param>
         private void TbSearch_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Key != Key.Enter)
+            {
+                return;
+            }
 
+            e.Handled = true;
+
+            var text = TbSearch.Text.Trim();
+            if (string.IsNullOrEmpty(text))
+            {
+                return;
+            }
+
+            if (_Plugin != null)
+            {
+                _Plugin.Enter(text);
+            }
+        }
+
+        private void TbSearch_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            var text = TbSearch.Text.Trim();
+            if (string.IsNullOrEmpty(text))
+            {
+                BdResult.Visibility = Visibility.Hidden;
+                return;
+            }
+
+            if (_Plugin != null)
+            {
+                _Plugin.Input(text);
+            }
         }
         #endregion
 
@@ -173,6 +215,7 @@ namespace Me.Amon
         {
             var t = visible ? Visibility.Visible : Visibility.Hidden;
             BdSearch.Visibility = t;
+            //BdResult.Visibility = t;
 
             if (visible)
             {

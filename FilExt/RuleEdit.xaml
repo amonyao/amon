@@ -11,24 +11,44 @@
     <Window.Resources>
         <ContextMenu x:Key="RenameMenu">
             <MenuItem Header="文件">
-                <MenuItem Header="文件名称"></MenuItem>
-                <MenuItem Header="文件后缀"></MenuItem>
+                <MenuItem Header="文件名称" Click="MiDateTime_Click" CommandParameter="FileName"></MenuItem>
+                <MenuItem Header="文件后缀" Click="MiDateTime_Click" CommandParameter="FileExt"></MenuItem>
             </MenuItem>
             <MenuItem Header="创建时间">
-                <MenuItem Header="年"></MenuItem>
-                <MenuItem Header="月"></MenuItem>
-                <MenuItem Header="日"></MenuItem>
-                <MenuItem Header="时"></MenuItem>
-                <MenuItem Header="分"></MenuItem>
-                <MenuItem Header="秒"></MenuItem>
+                <MenuItem Header="日期" Click="MiDateTime_Click" CommandParameter="CreateDate"></MenuItem>
+                <MenuItem Header="时间" Click="MiDateTime_Click" CommandParameter="CreateTime"></MenuItem>
+                <MenuItem Header="日期时间" Click="MiDateTime_Click" CommandParameter="CreateDateTime"></MenuItem>
+                <Separator/>
+                <MenuItem Header="年" Click="MiDateTime_Click" CommandParameter="CreateYear"></MenuItem>
+                <MenuItem Header="月" Click="MiDateTime_Click" CommandParameter="CreateMonth"></MenuItem>
+                <MenuItem Header="日" Click="MiDateTime_Click" CommandParameter="CreateDay"></MenuItem>
+                <MenuItem Header="时" Click="MiDateTime_Click" CommandParameter="CreateHour"></MenuItem>
+                <MenuItem Header="分" Click="MiDateTime_Click" CommandParameter="CreateMinute"></MenuItem>
+                <MenuItem Header="秒" Click="MiDateTime_Click" CommandParameter="CreateSecond"></MenuItem>
             </MenuItem>
             <MenuItem Header="更新时间">
-                <MenuItem Header="年"></MenuItem>
-                <MenuItem Header="月"></MenuItem>
-                <MenuItem Header="日"></MenuItem>
-                <MenuItem Header="时"></MenuItem>
-                <MenuItem Header="分"></MenuItem>
-                <MenuItem Header="秒"></MenuItem>
+                <MenuItem Header="日期" Click="MiDateTime_Click" CommandParameter="UpdateDate"></MenuItem>
+                <MenuItem Header="时间" Click="MiDateTime_Click" CommandParameter="UpdateTime"></MenuItem>
+                <MenuItem Header="日期时间" Click="MiDateTime_Click" CommandParameter="UpdateDateTime"></MenuItem>
+                <Separator/>
+                <MenuItem Header="年" Click="MiDateTime_Click" CommandParameter="UpdateYear"></MenuItem>
+                <MenuItem Header="月" Click="MiDateTime_Click" CommandParameter="UpdateMonth"></MenuItem>
+                <MenuItem Header="日" Click="MiDateTime_Click" CommandParameter="UpdateDay"></MenuItem>
+                <MenuItem Header="时" Click="MiDateTime_Click" CommandParameter="UpdateHour"></MenuItem>
+                <MenuItem Header="分" Click="MiDateTime_Click" CommandParameter="UpdateMinute"></MenuItem>
+                <MenuItem Header="秒" Click="MiDateTime_Click" CommandParameter="UpdateSecond"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="访问时间">
+                <MenuItem Header="日期" Click="MiDateTime_Click" CommandParameter="AccessDate"></MenuItem>
+                <MenuItem Header="时间" Click="MiDateTime_Click" CommandParameter="AccessTime"></MenuItem>
+                <MenuItem Header="日期时间" Click="MiDateTime_Click" CommandParameter="AccessDateTime"></MenuItem>
+                <Separator/>
+                <MenuItem Header="年" Click="MiDateTime_Click" CommandParameter="AccessYear"></MenuItem>
+                <MenuItem Header="月" Click="MiDateTime_Click" CommandParameter="AccessMonth"></MenuItem>
+                <MenuItem Header="日" Click="MiDateTime_Click" CommandParameter="AccessDay"></MenuItem>
+                <MenuItem Header="时" Click="MiDateTime_Click" CommandParameter="AccessHour"></MenuItem>
+                <MenuItem Header="分" Click="MiDateTime_Click" CommandParameter="AccessMinute"></MenuItem>
+                <MenuItem Header="秒" Click="MiDateTime_Click" CommandParameter="AccessSecond"></MenuItem>
             </MenuItem>
         </ContextMenu>
     </Window.Resources>

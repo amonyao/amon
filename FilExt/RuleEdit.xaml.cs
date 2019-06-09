@@ -18,12 +18,6 @@ namespace Me.Amon.FilExt
         public RuleEdit()
         {
             InitializeComponent();
-
-            TbSrcPath.IsEnabled = false;
-            BtSrcPath.IsEnabled = false;
-
-            TbDstFile.IsEnabled = false;
-            BtDstFile.IsEnabled = false;
         }
 
         public void Init(RuleDto dto)
@@ -204,6 +198,23 @@ namespace Me.Amon.FilExt
             {
                 input.Text = dialog.FileName;
             }
+        }
+
+        private void MiDateTime_Click(object sender, RoutedEventArgs e)
+        {
+            var item = sender as MenuItem;
+            if (item == null)
+            {
+                return;
+            }
+
+            var command = item.CommandParameter as string;
+            if (string.IsNullOrWhiteSpace(command))
+            {
+                return;
+            }
+
+            TbDstFile.Text += $"<{command}>";
         }
     }
 }

@@ -4,55 +4,59 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Height="40" Width="400" ResizeMode="NoResize"
-        Title="FileWindow" ShowInTaskbar="False" Topmost="True"
+        Height="300" Width="400" ResizeMode="NoResize"
+        Title="FileWindow" ShowInTaskbar="False" Topmost="False"
         WindowStyle="None" AllowsTransparency="True" Opacity="1" Background="Transparent"
         AllowDrop="True" DragEnter="Window_DragEnter" Drop="Window_Drop"
         MouseLeftButtonDown="Window_MouseLeftButtonDown">
 
-    <Border x:Name="BdWindow" BorderThickness="1" CornerRadius="5" Padding="3">
-        <Border.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Color="#CCCCCC" Offset="0"/>
-                <GradientStop Color="#999999" Offset="0.93"/>
-            </LinearGradientBrush>
-        </Border.Background>
+    <DockPanel>
+        <Border x:Name="BdWindow" DockPanel.Dock="Top" BorderThickness="1" CornerRadius="5" Padding="3" Height="41">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#CCCCCC" Offset="0"/>
+                    <GradientStop Color="#999999" Offset="0.93"/>
+                </LinearGradientBrush>
+            </Border.Background>
 
-        <DockPanel>
-            <!--徽标-->
-            <Border x:Name="BdFilexp" BorderThickness="2" BorderBrush="#673AB7" CornerRadius="20" Padding="5,2,5,0" DockPanel.Dock="Right">
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Color="White" Offset="0"/>
-                        <GradientStop Color="#E5E7EB" Offset="0.93"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-                <Label x:Name="LbFilexp" MouseDoubleClick="LbFilexp_MouseDoubleClick" Width="24" Height="24" Margin="0" Padding="0">
-                    <Image x:Name="ImFilexp" Source="Logo/Logo24.png" Width="24" Height="24">
-                        <Image.ContextMenu>
-                            <ContextMenu>
-                                <MenuItem Header="规则" x:Name="MiRule" Click="MiRule_Click"></MenuItem>
-                                <MenuItem Header="快捷入口" x:Name="MiAid" Click="MiAid_Click" Visibility="Collapsed"></MenuItem>
-                                <MenuItem Header="设置" x:Name="MiCfg" Click="MiCfg_Click" Visibility="Collapsed"></MenuItem>
-                                <Separator/>
-                                <MenuItem Header="关于" x:Name="MiInfo" Click="MiInfo_Click"></MenuItem>
-                                <Separator/>
-                                <MenuItem Header="退出" x:Name="MiExit" Click="MiExit_Click"></MenuItem>
-                            </ContextMenu>
-                        </Image.ContextMenu>
-                    </Image>
+            <DockPanel>
+                <!--徽标-->
+                <Border x:Name="BdFilexp" BorderThickness="2" BorderBrush="#673AB7" CornerRadius="20" Padding="5,2,5,0" DockPanel.Dock="Right">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="#E5E7EB" Offset="0.93"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Label x:Name="LbFilexp" MouseDoubleClick="LbFilexp_MouseDoubleClick" Width="24" Height="24" Margin="0" Padding="0">
+                        <Image x:Name="ImFilexp" Source="Logo/Logo24.png" Width="24" Height="24">
+                            <Image.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="规则" x:Name="MiRule" Click="MiRule_Click"></MenuItem>
+                                    <MenuItem Header="快捷入口" x:Name="MiAid" Click="MiAid_Click" Visibility="Collapsed"></MenuItem>
+                                    <MenuItem Header="设置" x:Name="MiCfg" Click="MiCfg_Click" Visibility="Collapsed"></MenuItem>
+                                    <Separator/>
+                                    <MenuItem Header="关于" x:Name="MiInfo" Click="MiInfo_Click"></MenuItem>
+                                    <Separator/>
+                                    <MenuItem Header="退出" x:Name="MiExit" Click="MiExit_Click"></MenuItem>
+                                </ContextMenu>
+                            </Image.ContextMenu>
+                        </Image>
 
-                </Label>
-            </Border>
+                    </Label>
+                </Border>
 
-            <!--搜索-->
-            <Border x:Name="BdSearch" BorderThickness="1" Background="White" CornerRadius="3" Margin="0,0,5,0">
-                <DockPanel>
-                    <Image x:Name="ImSearch" Margin="5,0,5,0" Width="24" Height="24" DockPanel.Dock="Left" Source="Images/Search.png"></Image>
-                    <TextBox x:Name="TbSearch" Padding="0,0,0,0" BorderThickness="0" FontSize="18" FontWeight="Bold" KeyDown="TbSearch_KeyDown"></TextBox>
-                </DockPanel>
-            </Border>
+                <!--搜索-->
+                <Border x:Name="BdSearch" BorderThickness="1" Background="White" CornerRadius="3" Margin="0,0,5,0">
+                    <DockPanel>
+                        <Image x:Name="ImSearch" Margin="5,0,5,0" Width="24" Height="24" DockPanel.Dock="Left" Source="Images/Search.png"></Image>
+                        <TextBox x:Name="TbSearch" Padding="0,0,0,0" BorderThickness="0" FontSize="18" FontWeight="Bold" TextChanged="TbSearch_TextChanged" KeyDown="TbSearch_KeyDown"></TextBox>
+                    </DockPanel>
+                </Border>
+            </DockPanel>
+        </Border>
 
-        </DockPanel>
-    </Border>
+        <Border x:Name="BdResult" CornerRadius="5" Background="Gray" Margin="0,0,0,0" Visibility="Collapsed">
+        </Border>
+    </DockPanel>
 </Window>
