@@ -132,3 +132,16 @@ CREATE TABLE [tag_doc] (
 
 CREATE UNIQUE INDEX [idx_tag_doc_td]
 	ON [tag_doc] ([tag_id], [doc_id]);
+
+CREATE TABLE [cmd_file] (
+	[id] integer NOT NULL PRIMARY KEY AUTOINCREMENT, 
+	[od] int NOT NULL DEFAULT 0, 
+	[os] varchar(8), 
+	[file] varchar(1024) NOT NULL, 
+	[tips] varchar(256), 
+	[keys] varchar(256), 
+	[path] varchar(1024), 
+	[status] int NOT NULL DEFAULT 0, 
+	[create_time] datetime NOT NULL, 
+	[update_time] timestamp NOT NULL
+);

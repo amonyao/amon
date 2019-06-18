@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Windows;
 
 namespace Me.Amon
@@ -45,6 +46,19 @@ namespace Me.Amon
             catch
             {
                 MessageBox.Show("无法访问剪贴板，请尝试手动访问！");
+            }
+        }
+
+        private void LcVer_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+            try
+            {
+                System.Diagnostics.Process.Start(path);
+            }
+            catch
+            {
+                MessageBox.Show("程序安装路径：" + path);
             }
         }
     }

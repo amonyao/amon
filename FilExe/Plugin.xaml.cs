@@ -84,29 +84,19 @@ namespace Me.Amon.FilExe
             _Files.Clear();
 
             meta = meta.ToLower();
-            meta = Regex.Escape(meta);
 
-            var list = SearchByPattern("^" + meta);
-            SortList(list);
-            list = SearchByPattern("(" + meta + ")");
-            SortList(list);
-            list = SearchByPattern("[" + meta + "]+");
-            SortList(list);
-
-            var regex1 = new Regex("(" + meta + ")");
-            var regex2 = new Regex("");
             var list1 = new List<AppDvo>();
             var list2 = new List<AppDvo>();
             foreach (var item in _List)
             {
                 foreach (var key in item.kkkk)
                 {
-                    if (regex1.IsMatch(key))
+                    if (key.IndexOf(meta) >= 0)
                     {
                         list1.Add(item);
                         continue;
                     }
-                    if (regex2.IsMatch(key))
+                    if (IsMatch(key, meta))
                     {
                         list2.Add(item);
                         continue;
@@ -125,6 +115,8 @@ namespace Me.Amon.FilExe
             {
                 _Main.ShowUserView("", System.Windows.Visibility.Collapsed);
             }
+
+            LbResult.SelectedIndex = 0;
         }
 
         private List<AppDvo> SearchByPattern(string pattern)
@@ -155,16 +147,56 @@ namespace Me.Amon.FilExe
         {
             for (int i = 0; i < list.Count; i += 1)
             {
-                //var itemi = list[i];
-                //for (int j = i + 1; j < list.Count; j += 1)
-                //{
-                //    var itemj = list[j];
-                //    if (itemi.od < itemj.od)
-                //    {
+                var src = list[i];
+                for (int j = i + 1; j < list.Count; j += 1)
+                {
+                    var dst = list[j];
+                    if (src.od < dst.od)
+                    {
+                        list[i] = dst;
+                        list[j] = src;
+                        src = dst;
+                    }
+                }
+                _Files.Add(src);
+            }
+        }
 
-                //    }
-                //}
-                _Files.Add(list[i]);
+        /// <summary>
+        /// 按关键时顺序匹配
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="pattern"></param>
+        /// <returns></returns>
+        private bool IsMatch(string input, string pattern)
+        {
+            if (string.IsNullOrWhiteSpace(input) || string.IsNullOrWhiteSpace(pattern))
+            {
+                return false;
+            }
+
+            var srcIdx = 0;
+            var srcQty = input.Length;
+            var dstIdx = 0;
+            var dstQty = pattern.Length;
+
+            while (true)
+            {
+                if (pattern[dstIdx] == input[srcIdx])
+                {
+                    dstIdx += 1;
+                }
+                srcIdx += 1;
+
+                if (dstIdx >= dstQty)
+                {
+                    return true;
+                }
+
+                if (srcIdx >= srcQty)
+                {
+                    return false;
+                }
             }
         }
     }

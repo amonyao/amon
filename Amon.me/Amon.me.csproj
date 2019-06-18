@@ -187,6 +187,10 @@
     <Resource Include="Images\Search.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FilExe\FilExe.csproj">
+      <Project>{7e7a6795-83c7-4f92-a354-5b017b08c052}</Project>
+      <Name>FilExe</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FilExt\FilExt.csproj">
       <Project>{b0e14e4b-12db-45fb-ad70-3af4efdc015c}</Project>
       <Name>FilExt</Name>

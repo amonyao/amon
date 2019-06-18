@@ -21,11 +21,11 @@
             </TextBlock>
 
             <Label x:Name="LtVer" Content="版本：" HorizontalAlignment="Left" Margin="10,0,0,87" VerticalAlignment="Bottom"/>
-            <Label x:Name="LcVer" Content="1.0.0.0" HorizontalAlignment="Left" Margin="56,0,0,87" VerticalAlignment="Bottom"/>
+            <Label x:Name="LcVer" Content="1.0.0.0" MouseDoubleClick="LcVer_MouseDoubleClick" ToolTip="双击打开安装路径" HorizontalAlignment="Left" Margin="56,0,0,87" VerticalAlignment="Bottom"/>
             <Label x:Name="LtSite" Content="网站：" HorizontalAlignment="Left" Margin="10,0,0,62" VerticalAlignment="Bottom"/>
-            <Button x:Name="LcSite" Content="http://amon.me/" Click="LcSite_Click" ToolTip="点击访问" Foreground="Blue" Background="Transparent" BorderThickness="0" Padding="0" HorizontalAlignment="Left" Margin="60,0,0,59" VerticalAlignment="Bottom"/>
+            <Button x:Name="LcSite" Content="http://amon.me/" Click="LcSite_Click" ToolTip="点击访问" Foreground="Blue" Background="Transparent" BorderThickness="0" Padding="0" HorizontalAlignment="Left" Margin="60,0,0,59" VerticalAlignment="Bottom" FontSize="12"/>
             <Label x:Name="LtChat" Content="QQ群：" HorizontalAlignment="Left" Margin="10,0,0,37" VerticalAlignment="Bottom"/>
-            <Button x:Name="LcChat" Content="415872667" Click="LcChat_Click" ToolTip="点击复制" Foreground="Blue" Background="Transparent" BorderThickness="0" Padding="0" HorizontalAlignment="Left" Margin="60,0,0,34" VerticalAlignment="Bottom"/>
+            <Button x:Name="LcChat" Content="415872667" Click="LcChat_Click" ToolTip="点击复制" Foreground="Blue" Background="Transparent" BorderThickness="0" Padding="0" HorizontalAlignment="Left" Margin="60,0,0,34" VerticalAlignment="Bottom" FontSize="12"/>
 
             <Button x:Name="BtAccept" Content="确定" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Bottom" Width="75" Click="BtAccept_Click"/>
         </Grid>

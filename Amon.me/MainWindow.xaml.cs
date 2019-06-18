@@ -1,4 +1,5 @@
 ﻿using Me.Amon.Tray;
+using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,8 +28,8 @@ namespace Me.Amon
 
             _User = new Ur.UserInfo();
 
-            _Plugin = new FilExt.Plugin();
-            //_Plugin = new FilExe.Plugin();
+            //_Plugin = new FilExt.Plugin();
+            _Plugin = new FilExe.Plugin();
             _Plugin.Init(this, _User);
 
             ShowTray();
@@ -51,7 +52,7 @@ namespace Me.Amon
 
         public void ShowUserView(string key, Visibility visibility)
         {
-            BdResult.Visibility = Visibility;
+            this.BdResult.Dispatcher.Invoke(new Action(() => { this.BdResult.Visibility = Visibility; }));
         }
 
         public void ShowAppIcon(string icon)
@@ -210,6 +211,20 @@ namespace Me.Amon
         /// <param name="e"></param>
         private void TbSearch_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Key == Key.Escape)
+            {
+                if (BdResult.Visibility == Visibility.Visible)
+                {
+                    BdResult.Visibility = Visibility.Collapsed;
+                    return;
+                }
+                if (!string.IsNullOrWhiteSpace(TbSearch.Text))
+                {
+                    TbSearch.Text = "";
+                    return;
+                }
+                ShowSearch(false);
+            }
             if (e.Key != Key.Enter)
             {
                 return;
@@ -256,6 +271,8 @@ namespace Me.Amon
                 var tmp = BdWindow.Tag as WindowProperty;
                 BdWindow.Background = tmp.BgBrush;
                 BdWindow.BorderBrush = tmp.BdBrush;
+                TbSearch.Focus();
+                TbSearch.SelectAll();
             }
             else
             {
