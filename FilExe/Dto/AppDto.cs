@@ -11,7 +11,7 @@ namespace Me.Amon.FilExe.Dto
         /// <summary>
         /// 文件名
         /// </summary>
-        public string file { get; set; }
+        public string text { get; set; }
 
         /// <summary>
         /// 提示信息
@@ -24,7 +24,12 @@ namespace Me.Amon.FilExe.Dto
         public string path { get; set; }
 
         /// <summary>
-        /// 快捷键
+        /// 文件名称
+        /// </summary>
+        public string file { get; set; }
+
+        /// <summary>
+        /// 快捷命令
         /// </summary>
         public string keys { get; set; }
     }

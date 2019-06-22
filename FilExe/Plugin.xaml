@@ -10,7 +10,7 @@
         <DataTemplate x:Key="listBoxTemplate">
             <StackPanel Margin="4">
                 <DockPanel>
-                    <TextBlock Text="{Binding file}" DockPanel.Dock="Top"></TextBlock>
+                    <TextBlock Text="{Binding text}" DockPanel.Dock="Top"></TextBlock>
                     <TextBlock Text="{Binding path}" Foreground="Green" FontWeight="Bold"/>
                 </DockPanel>
             </StackPanel>

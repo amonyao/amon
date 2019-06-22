@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Me.Amon.FilExe.Dto;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace FilExe
+namespace Me.Amon.FilExe
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
@@ -23,6 +11,21 @@ namespace FilExe
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public void Init()
+        {
+        }
+
+        private void BtAccept_Click(object sender, RoutedEventArgs e)
+        {
+            var appDto = new AppDto();
+            Close();
+        }
+
+        private void BtCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

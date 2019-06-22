@@ -2,7 +2,7 @@
 using Me.Amon.FilExe.Dvo;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text.RegularExpressions;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Me.Amon.FilExe
@@ -70,11 +70,13 @@ namespace Me.Amon.FilExe
 
             try
             {
-                System.Diagnostics.Process.Start(item.file);
+                System.Diagnostics.Process.Start(item.path);
+                _Main.ShowUserView("", Visibility.Collapsed);
+                _Main.ShowSearch(false);
             }
             catch
             {
-                //MessageBox.Show("无法启动浏览器，请尝试手动打开！");
+                MessageBox.Show("无法启动浏览器，请尝试手动打开！");
             }
         }
         #endregion
@@ -89,19 +91,7 @@ namespace Me.Amon.FilExe
             var list2 = new List<AppDvo>();
             foreach (var item in _List)
             {
-                foreach (var key in item.kkkk)
-                {
-                    if (key.IndexOf(meta) >= 0)
-                    {
-                        list1.Add(item);
-                        continue;
-                    }
-                    if (IsMatch(key, meta))
-                    {
-                        list2.Add(item);
-                        continue;
-                    }
-                }
+                item.IsMatch(meta, list1, list2);
             }
 
             SortList(list1);
@@ -117,30 +107,6 @@ namespace Me.Amon.FilExe
             }
 
             LbResult.SelectedIndex = 0;
-        }
-
-        private List<AppDvo> SearchByPattern(string pattern)
-        {
-            var list = new List<AppDvo>();
-
-            foreach (var item in _List)
-            {
-                if (item.kkkk == null || item.kkkk.Length < 1)
-                {
-                    continue;
-                }
-
-                foreach (var key in item.kkkk)
-                {
-                    if (Regex.IsMatch(key, pattern, RegexOptions.IgnoreCase))
-                    {
-                        list.Add(item);
-                        break;
-                    }
-                }
-            }
-
-            return list;
         }
 
         private void SortList(List<AppDvo> list)
@@ -159,44 +125,6 @@ namespace Me.Amon.FilExe
                     }
                 }
                 _Files.Add(src);
-            }
-        }
-
-        /// <summary>
-        /// 按关键时顺序匹配
-        /// </summary>
-        /// <param name="input"></param>
-        /// <param name="pattern"></param>
-        /// <returns></returns>
-        private bool IsMatch(string input, string pattern)
-        {
-            if (string.IsNullOrWhiteSpace(input) || string.IsNullOrWhiteSpace(pattern))
-            {
-                return false;
-            }
-
-            var srcIdx = 0;
-            var srcQty = input.Length;
-            var dstIdx = 0;
-            var dstQty = pattern.Length;
-
-            while (true)
-            {
-                if (pattern[dstIdx] == input[srcIdx])
-                {
-                    dstIdx += 1;
-                }
-                srcIdx += 1;
-
-                if (dstIdx >= dstQty)
-                {
-                    return true;
-                }
-
-                if (srcIdx >= srcQty)
-                {
-                    return false;
-                }
             }
         }
     }

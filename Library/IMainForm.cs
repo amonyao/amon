@@ -29,6 +29,8 @@ namespace Me.Amon
         /// </summary>
         void HideWindow();
 
+        void ShowSearch(bool visible);
+
         /// <summary>
         /// 关于
         /// </summary>

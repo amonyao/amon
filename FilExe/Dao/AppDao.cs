@@ -12,13 +12,13 @@ namespace Me.Amon.FilExe.Dao
             {
                 orderby = new Orderby();
             }
-            var sql = @"SELECT a.[id],a.[od],a.[os],a.[file],a.[tips],a.[keys],a.[path],a.[status],a.[update_time],a.[create_time] FROM [cmd_file] a WHERE a.[status] = 1";
+            var sql = @"SELECT a.[id],a.[od],a.[os],a.[text],a.[tips],a.[keys],a.[file],a.[path],a.[status],a.[update_time],a.[create_time] FROM [cmd_file] a WHERE a.[status] = 1";
             return Query<K>(sql, dto);
         }
 
         public override K Read<K>(long id)
         {
-            var sql = $"SELECT a.[id],a.[od],a.[os],a.[file],a.[tips],a.[keys],a.[path],a.[status],a.[update_time],a.[create_time] FROM [cmd_file] a WHERE a.[id] = {id}";
+            var sql = $"SELECT a.[id],a.[od],a.[os],a.[text],a.[tips],a.[keys],a.[file],a.[path],a.[status],a.[update_time],a.[create_time] FROM [cmd_file] a WHERE a.[id] = {id}";
             return QueryFirst<K>(sql);
         }
 
@@ -28,13 +28,13 @@ namespace Me.Amon.FilExe.Dao
             var sql = "";
             if (IsValidId(dto.id))
             {
-                sql = "UPDATE [cmd_file] SET [od] = @od,[os] = @os,[file] = @file,[tips] = @tips,[keys] = @keys,[path] = @path,[update_time] = @update_time WHERE [id] = @id";
+                sql = "UPDATE [cmd_file] SET [od] = @od,[os] = @os,[text] = @text,[tips] = @tips,[keys] = @keys,[file] = @file,[path] = @path,[update_time] = @update_time WHERE [id] = @id";
                 ExecuteUpdate(sql, dto);
             }
             else
             {
                 dto.create_time = dto.update_time;
-                sql = "INSERT INTO [cmd_file] ([od],[os],[file],[tips],[keys],[path],[status],[create_time],[update_time]) VALUES (@od,@os,@file,@tips,@keys,@path,@status,@create_time,@update_time)";
+                sql = "INSERT INTO [cmd_file] ([od],[os],[text],[tips],[keys],a.[file],[path],[status],[create_time],[update_time]) VALUES (@od,@os,@text,@tips,@keys,@file,@path,@status,@create_time,@update_time)";
                 ExecuteInsert(sql, dto);
             }
         }

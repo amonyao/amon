@@ -32,7 +32,8 @@
                         <Image x:Name="ImFilexp" Source="Logo/Logo24.png" Width="24" Height="24">
                             <Image.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="规则" x:Name="MiRule" Click="MiRule_Click"></MenuItem>
+                                    <MenuItem Header="快速启动" x:Name="MiCmdEdit" Click="MiCmdEdit_Click"></MenuItem>
+                                    <MenuItem Header="文件管理" x:Name="MiRule" Click="MiRule_Click"></MenuItem>
                                     <MenuItem Header="快捷入口" x:Name="MiAid" Click="MiAid_Click" Visibility="Collapsed"></MenuItem>
                                     <MenuItem Header="设置" x:Name="MiCfg" Click="MiCfg_Click" Visibility="Collapsed"></MenuItem>
                                     <Separator/>

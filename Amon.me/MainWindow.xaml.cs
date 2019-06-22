@@ -52,7 +52,7 @@ namespace Me.Amon
 
         public void ShowUserView(string key, Visibility visibility)
         {
-            this.BdResult.Dispatcher.Invoke(new Action(() => { this.BdResult.Visibility = Visibility; }));
+            this.BdResult.Dispatcher.Invoke(new Action(() => { this.BdResult.Visibility = visibility; }));
         }
 
         public void ShowAppIcon(string icon)
@@ -143,6 +143,13 @@ namespace Me.Amon
                 _Plugin.Enter(list);
                 return;
             }
+        }
+
+        private void MiCmdEdit_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new FilExe.CmdList();
+            window.Init();
+            window.Show();
         }
 
         private void MiRule_Click(object sender, RoutedEventArgs e)
@@ -260,7 +267,7 @@ namespace Me.Amon
         }
         #endregion
 
-        private void ShowSearch(bool visible)
+        public void ShowSearch(bool visible)
         {
             var t = visible ? Visibility.Visible : Visibility.Hidden;
             BdSearch.Visibility = t;
