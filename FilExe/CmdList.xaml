@@ -13,8 +13,9 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="名称" Width="120" Binding="{Binding text}"></DataGridTextColumn>
                     <DataGridTextColumn Header="系统" Width="80" Binding="{Binding os}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="提示" Width="80*" Binding="{Binding tips}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="命名" Width="80*" Binding="{Binding path}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="提示" Width="120" Binding="{Binding tips}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="文件" Width="80*" Binding="{Binding path}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="命令" Width="160" Binding="{Binding keys}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Border>

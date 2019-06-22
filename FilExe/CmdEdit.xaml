@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Height="274" Width="400"
-        Title="命名编辑" WindowStartupLocation="CenterOwner">
+        Title="命名编辑" WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
     <Grid>
         <TextBlock x:Name="LtText" HorizontalAlignment="Left" Margin="10,22,0,0" TextWrapping="Wrap" Text="名称：" VerticalAlignment="Top"/>
         <TextBox x:Name="TbText" HorizontalAlignment="Stretch" Height="23" Margin="51,18,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
@@ -14,7 +14,6 @@
         <TextBox x:Name="TbTips" HorizontalAlignment="Stretch" Height="23" Margin="51,52,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock x:Name="LtPath" HorizontalAlignment="Left" Margin="10,90,0,0" TextWrapping="Wrap" Text="文件：" VerticalAlignment="Top"/>
         <TextBox x:Name="TbPath" HorizontalAlignment="Stretch" Height="23" Margin="51,86,39,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBlock x:Name="LtNotice" HorizontalAlignment="Left" Margin="10,0,0,17" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" Foreground="Red"/>
         <Button x:Name="BtPath" HorizontalAlignment="Right" Margin="0,85,10,0" VerticalAlignment="Top" Background="Transparent" Padding="0" BorderThickness="0" Width="24" Height="24" Click="BtPath_Click">
             <wpf:PackIcon Kind="FolderOpen" Width="24" Height="24"  Foreground="Black"/>
         </Button>
@@ -24,6 +23,8 @@
 
         <TextBlock x:Name="LtStatus" HorizontalAlignment="Left" Margin="10,156,0,0" TextWrapping="Wrap" Text="状态：" VerticalAlignment="Top"/>
         <CheckBox x:Name="CkStatus" Content="启用" HorizontalAlignment="Left" Margin="51,154,0,0" VerticalAlignment="Top"/>
+        
+        <TextBlock x:Name="LtNotice" HorizontalAlignment="Left" Margin="10,0,0,17" TextWrapping="Wrap" Text="多个命令请以英文逗号（,）隔开" VerticalAlignment="Bottom" Foreground="Red"/>
         <Button x:Name="BtAccept" Content="保存" HorizontalAlignment="Right" Margin="0,0,90,10" VerticalAlignment="Bottom" Width="75" Click="BtAccept_Click"/>
         <Button x:Name="BtCancel" Content="取消" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Click="BtCancel_Click"/>
     </Grid>

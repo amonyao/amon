@@ -17,6 +17,6 @@
         </DataTemplate>
     </UserControl.Resources>
     <Grid Background="White" Margin="5">
-        <ListBox x:Name="LbResult" ItemTemplate="{DynamicResource listBoxTemplate}"></ListBox>
+        <ListBox x:Name="LbResult" ItemTemplate="{DynamicResource listBoxTemplate}" MouseDoubleClick="LbResult_MouseDoubleClick" KeyDown="LbResult_KeyDown"></ListBox>
     </Grid>
 </UserControl>

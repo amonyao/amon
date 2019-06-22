@@ -1,7 +1,9 @@
 ﻿using Me.Amon.FilExe.Dao;
 using Me.Amon.FilExe.Dvo;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -17,6 +19,8 @@ namespace Me.Amon.FilExe
         private ObservableCollection<AppDvo> _Files = new ObservableCollection<AppDvo>();
         private IEnumerable<AppDvo> _List;
 
+        private static string StartUp;
+
         public Plugin()
         {
             InitializeComponent();
@@ -27,6 +31,8 @@ namespace Me.Amon.FilExe
         {
             _Main = form;
             _User = user;
+
+            StartUp = AppDomain.CurrentDomain.BaseDirectory;
 
             _Main.AddUserView(this);
 
@@ -53,34 +59,31 @@ namespace Me.Amon.FilExe
 
         public void Enter(params string[] args)
         {
-            if (_Files.Count < 1)
+            Execute();
+        }
+        #endregion
+
+        #region 事件处理
+        private void LbResult_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Execute();
+        }
+
+        private void LbResult_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key != System.Windows.Input.Key.Enter)
             {
                 return;
             }
 
-            var item = LbResult.SelectedItem as AppDvo;
-            if (item == null)
-            {
-                item = _Files[0];
-                if (item == null)
-                {
-                    return;
-                }
-            }
-
-            try
-            {
-                System.Diagnostics.Process.Start(item.path);
-                _Main.ShowUserView("", Visibility.Collapsed);
-                _Main.ShowSearch(false);
-            }
-            catch
-            {
-                MessageBox.Show("无法启动浏览器，请尝试手动打开！");
-            }
+            Execute();
         }
         #endregion
 
+        /// <summary>
+        /// 数据查找
+        /// </summary>
+        /// <param name="meta"></param>
         private void Search(string meta)
         {
             _Files.Clear();
@@ -125,6 +128,118 @@ namespace Me.Amon.FilExe
                     }
                 }
                 _Files.Add(src);
+            }
+        }
+
+        /// <summary>
+        /// 将全路径转换为相对路径
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string EncodePath(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                return path;
+            }
+
+            if (path.IndexOf(System.IO.Path.DirectorySeparatorChar) < 0)
+            {
+                return path;
+            }
+
+            path = path.Replace(StartUp, ".\\");
+
+            var types = typeof(Environment.SpecialFolder);
+            var keys = Enum.GetNames(types);
+            foreach (var key in keys)
+            {
+                var value = (Environment.SpecialFolder)Enum.Parse(types, key);
+                var temp = Environment.GetFolderPath(value);
+                if (!string.IsNullOrWhiteSpace(temp))
+                {
+                    path = Regex.Replace(path, Regex.Escape(temp), '<' + key + '>', RegexOptions.IgnoreCase);
+                }
+            }
+
+            return path;
+        }
+
+        /// <summary>
+        /// 将相对路径转换为全路径
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string DecodePath(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                return path;
+            }
+
+            if (path.IndexOf(System.IO.Path.DirectorySeparatorChar) < 0)
+            {
+                return path;
+            }
+
+            path = path.Replace(".\\", StartUp);
+
+            var types = typeof(Environment.SpecialFolder);
+            var matches = Regex.Matches(path, "<\\w+>");
+            foreach (Match match in matches)
+            {
+                if (!match.Success)
+                {
+                    continue;
+                }
+
+                var key = match.Value;
+                if (string.IsNullOrWhiteSpace(key) || key.Length < 2)
+                {
+                    continue;
+                }
+
+                var enums = key.Substring(1, key.Length - 2);
+                if (!Enum.IsDefined(types, enums))
+                {
+                    return path;
+                }
+
+                var value = (Environment.SpecialFolder)Enum.Parse(types, enums);
+                var temp = Environment.GetFolderPath(value);
+                path = path.Replace(key, temp);
+            }
+
+            return path;
+        }
+
+        private void Execute()
+        {
+            if (_Files.Count < 1)
+            {
+                return;
+            }
+
+            var item = LbResult.SelectedItem as AppDvo;
+            if (item == null)
+            {
+                item = _Files[0];
+                if (item == null)
+                {
+                    return;
+                }
+            }
+
+            try
+            {
+                var path = DecodePath(item.path);
+                System.Diagnostics.Process.Start(path);
+                _Main.ShowUserView("", Visibility.Collapsed);
+                _Main.ShowSearch(false);
+            }
+            catch
+            {
+                MessageBox.Show("无法启动浏览器，请尝试手动打开！");
             }
         }
     }

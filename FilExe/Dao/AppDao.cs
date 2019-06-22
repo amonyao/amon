@@ -34,7 +34,7 @@ namespace Me.Amon.FilExe.Dao
             else
             {
                 dto.create_time = dto.update_time;
-                sql = "INSERT INTO [cmd_file] ([od],[os],[text],[tips],[keys],a.[file],[path],[status],[create_time],[update_time]) VALUES (@od,@os,@text,@tips,@keys,@file,@path,@status,@create_time,@update_time)";
+                sql = "INSERT INTO [cmd_file] ([od],[os],[text],[tips],[keys],[file],[path],[status],[create_time],[update_time]) VALUES (@od,@os,@text,@tips,@keys,@file,@path,@status,@create_time,@update_time)";
                 ExecuteInsert(sql, dto);
             }
         }

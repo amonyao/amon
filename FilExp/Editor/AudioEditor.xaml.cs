@@ -1,6 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace Me.Amon.FilExp.Editor
 {

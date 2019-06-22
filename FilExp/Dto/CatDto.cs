@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-namespace Me.Amon.FilExp.Dto
+﻿namespace Me.Amon.FilExp.Dto
 {
     public class CatDto : DocDto
     {

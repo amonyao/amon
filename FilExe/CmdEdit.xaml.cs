@@ -57,7 +57,7 @@ namespace Me.Amon.FilExe
 
             _Dvo.text = text;
             _Dvo.tips = tips;
-            _Dvo.path = path;
+            _Dvo.path = Plugin.EncodePath(path);
             _Dvo.file = Path.GetFileNameWithoutExtension(path);
             _Dvo.keys = keys;
             _Dvo.Enabled = enabled ?? false;
