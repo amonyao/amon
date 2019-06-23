@@ -6,7 +6,7 @@ namespace Me.Amon.Dao
 {
     public class ScmDfa<T> : ScmDao<T> where T : ScmDto
     {
-        private string _File;
+        private string _File = "";
 
         public override T Load()
         {

@@ -8,7 +8,7 @@
         Title="FileWindow" ShowInTaskbar="False" Topmost="True"
         WindowStyle="None" AllowsTransparency="True" Opacity="1" Background="Transparent"
         AllowDrop="True" DragEnter="Window_DragEnter" Drop="Window_Drop"
-        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+        MouseLeftButtonDown="Window_MouseLeftButtonDown" Deactivated="Window_Deactivated">
 
     <DockPanel>
         <Border x:Name="BdWindow" DockPanel.Dock="Top" BorderThickness="1" CornerRadius="5" Padding="3" Height="41">
@@ -51,7 +51,7 @@
                 <Border x:Name="BdSearch" BorderThickness="1" Background="White" CornerRadius="3" Margin="0,0,5,0">
                     <DockPanel>
                         <Image x:Name="ImSearch" Margin="5,0,5,0" Width="24" Height="24" DockPanel.Dock="Left" Source="Images/Search.png"></Image>
-                        <TextBox x:Name="TbSearch" Padding="0,0,0,0" BorderThickness="0" FontSize="18" FontWeight="Bold" TextChanged="TbSearch_TextChanged" KeyDown="TbSearch_KeyDown"></TextBox>
+                        <TextBox x:Name="TbSearch" Padding="0,0,0,0" BorderThickness="0" FontSize="18" FontWeight="Bold" TextChanged="TbSearch_TextChanged" KeyDown="TbSearch_KeyDown" PreviewKeyDown="TbSearch_PreviewKeyDown"></TextBox>
                     </DockPanel>
                 </Border>
             </DockPanel>

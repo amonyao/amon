@@ -1,4 +1,5 @@
 ﻿using Me.Amon.Tray;
+using Me.Amon.WinApi;
 using System;
 using System.IO;
 using System.Windows;
@@ -16,6 +17,8 @@ namespace Me.Amon
         private IUserInfo _User;
         private IPlugin _Plugin;
 
+        private KeyboardHook _Hook;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -32,11 +35,43 @@ namespace Me.Amon
             _Plugin = new FilExe.Plugin();
             _Plugin.Init(this, _User);
 
+            ShowCommand(false);
+
+            _Hook = new KeyboardHook();
+            _Hook.KeyDownEvent += Hook_KeyDownEvent;
+            _Hook.SetHook();
+
             ShowTray();
 
-            ShowSearch(false);
-
             ShowUpgrade();
+        }
+
+        private int CtrlQty = 0;
+        private DateTime CtrlTime = DateTime.Now;
+        private void Hook_KeyDownEvent(Key key)
+        {
+            var now = DateTime.Now;
+            if (key == Key.LeftCtrl || key == Key.RightCtrl)
+            {
+                if ((now - CtrlTime).Milliseconds > 300)
+                {
+                    CtrlQty = 0;
+                }
+
+                CtrlQty += 1;
+                if (CtrlQty > 2)
+                {
+                    Activate();
+                    ShowCommand(true);
+                    CtrlQty = 0;
+                }
+
+                CtrlTime = now;
+                return;
+            }
+
+            CtrlQty = 0;
+            CtrlTime = now;
         }
 
         private void ShowTray()
@@ -45,17 +80,51 @@ namespace Me.Amon
         }
 
         #region 接口实现
-        public void AddUserView(UserControl control)
+        public void ShowCommand(bool visible)
+        {
+            var t = visible ? Visibility.Visible : Visibility.Hidden;
+            BdSearch.Visibility = t;
+            //BdResult.Visibility = t;
+
+            if (visible)
+            {
+                var tmp = BdWindow.Tag as WindowProperty;
+                BdWindow.Background = tmp.BgBrush;
+                BdWindow.BorderBrush = tmp.BdBrush;
+                TbSearch.Focus();
+                TbSearch.SelectAll();
+            }
+            else
+            {
+                BdWindow.Tag = new WindowProperty() { BgBrush = BdWindow.Background, BdBrush = BdWindow.BorderBrush };
+                BdWindow.Background = Brushes.Transparent;
+                BdWindow.BorderBrush = Brushes.Transparent;
+            }
+        }
+
+        public string CommandText
+        {
+            get
+            {
+                return TbSearch.Text;
+            }
+            set
+            {
+                TbSearch.Text = value;
+            }
+        }
+
+        public void AddPluginView(UserControl control)
         {
             BdResult.Child = control;
         }
 
-        public void ShowUserView(string key, Visibility visibility)
+        public void SetPluginView(string key, Visibility visibility)
         {
             this.BdResult.Dispatcher.Invoke(new Action(() => { this.BdResult.Visibility = visibility; }));
         }
 
-        public void ShowAppIcon(string icon)
+        public void ShowPluginIcon(string icon)
         {
             throw new System.NotImplementedException();
         }
@@ -84,6 +153,11 @@ namespace Me.Amon
 
         public void Exit()
         {
+            if (_Hook != null)
+            {
+                _Hook.UnHook();
+            }
+
             Close();
             Application.Current.Shutdown();
         }
@@ -107,13 +181,9 @@ namespace Me.Amon
         /// <param name="e"></param>
         private void Window_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            if (_Plugin != null)
             {
-                e.Effects = DragDropEffects.Link;
-            }
-            else
-            {
-                e.Effects = DragDropEffects.None;
+                _Plugin.Drag_Enter(e);
             }
         }
 
@@ -124,25 +194,16 @@ namespace Me.Amon
         /// <param name="e"></param>
         private void Window_Drop(object sender, DragEventArgs e)
         {
-            if (!e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                return;
-            }
-
-            var data = e.Data.GetData(DataFormats.FileDrop);
-            if (data == null || !(data is string[]))
-            {
-                return;
-            }
-
-            e.Handled = true;
-
-            var list = (string[])data;
             if (_Plugin != null)
             {
-                _Plugin.Enter(list);
-                return;
+                _Plugin.Drag_Droped(e);
             }
+        }
+
+        private void Window_Deactivated(object sender, EventArgs e)
+        {
+            //ShowCommand(false);
+            //SetPluginView("", Visibility.Collapsed);
         }
 
         private void MiCmdEdit_Click(object sender, RoutedEventArgs e)
@@ -208,15 +269,10 @@ namespace Me.Amon
         private void LbFilexp_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var visible = BdSearch.Visibility == Visibility.Visible;
-            ShowSearch(!visible);
+            ShowCommand(!visible);
         }
 
-        /// <summary>
-        /// 文本输入事项
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TbSearch_KeyDown(object sender, KeyEventArgs e)
+        private void TbSearch_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
             {
@@ -230,25 +286,22 @@ namespace Me.Amon
                     TbSearch.Text = "";
                     return;
                 }
-                ShowSearch(false);
-            }
-            if (e.Key != Key.Enter)
-            {
-                return;
-            }
-
-            e.Handled = true;
-
-            var text = TbSearch.Text.Trim();
-            if (string.IsNullOrEmpty(text))
-            {
-                return;
+                ShowCommand(false);
             }
 
             if (_Plugin != null)
             {
-                _Plugin.Enter(text);
+                _Plugin.Meta_KeyDown(e);
             }
+        }
+
+        /// <summary>
+        /// 文本输入事项
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
         }
 
         private void TbSearch_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -262,32 +315,10 @@ namespace Me.Amon
 
             if (_Plugin != null)
             {
-                _Plugin.Input(text);
+                _Plugin.Text_Changed(e);
             }
         }
         #endregion
-
-        public void ShowSearch(bool visible)
-        {
-            var t = visible ? Visibility.Visible : Visibility.Hidden;
-            BdSearch.Visibility = t;
-            //BdResult.Visibility = t;
-
-            if (visible)
-            {
-                var tmp = BdWindow.Tag as WindowProperty;
-                BdWindow.Background = tmp.BgBrush;
-                BdWindow.BorderBrush = tmp.BdBrush;
-                TbSearch.Focus();
-                TbSearch.SelectAll();
-            }
-            else
-            {
-                BdWindow.Tag = new WindowProperty() { BgBrush = BdWindow.Background, BdBrush = BdWindow.BorderBrush };
-                BdWindow.Background = Brushes.Transparent;
-                BdWindow.BorderBrush = Brushes.Transparent;
-            }
-        }
 
         /// <summary>
         /// 系统更新

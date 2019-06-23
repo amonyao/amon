@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Me.Amon.FilExe
 {
@@ -34,7 +35,7 @@ namespace Me.Amon.FilExe
 
             StartUp = AppDomain.CurrentDomain.BaseDirectory;
 
-            _Main.AddUserView(this);
+            _Main.AddPluginView(this);
 
             LbResult.ItemsSource = _Files;
 
@@ -46,20 +47,45 @@ namespace Me.Amon.FilExe
             }
         }
 
-        public void Input(params string[] args)
+        public void Text_Changed(TextChangedEventArgs e)
         {
-            if (args == null || args.Length < 1)
+            var text = _Main.CommandText;
+            if (string.IsNullOrWhiteSpace(text))
             {
                 return;
             }
 
-            var key = args[0];
-            Search(key);
+            Search(text);
         }
 
-        public void Enter(params string[] args)
+        public void Meta_KeyDown(KeyEventArgs e)
         {
-            Execute();
+            if (e.Key == Key.Up)
+            {
+                SelectPrev();
+                return;
+            }
+            if (e.Key == Key.Down)
+            {
+                SelectNext();
+                return;
+            }
+
+            if (e.Key == Key.Enter)
+            {
+                Execute();
+                return;
+            }
+        }
+
+        public void Drag_Enter(DragEventArgs e)
+        {
+
+        }
+
+        public void Drag_Droped(DragEventArgs e)
+        {
+
         }
         #endregion
 
@@ -102,11 +128,11 @@ namespace Me.Amon.FilExe
 
             if (_Files.Count > 0)
             {
-                _Main.ShowUserView("", System.Windows.Visibility.Visible);
+                _Main.SetPluginView("", System.Windows.Visibility.Visible);
             }
             else
             {
-                _Main.ShowUserView("", System.Windows.Visibility.Collapsed);
+                _Main.SetPluginView("", System.Windows.Visibility.Collapsed);
             }
 
             LbResult.SelectedIndex = 0;
@@ -213,6 +239,9 @@ namespace Me.Amon.FilExe
             return path;
         }
 
+        /// <summary>
+        /// 执行命令
+        /// </summary>
         private void Execute()
         {
             if (_Files.Count < 1)
@@ -234,13 +263,51 @@ namespace Me.Amon.FilExe
             {
                 var path = DecodePath(item.path);
                 System.Diagnostics.Process.Start(path);
-                _Main.ShowUserView("", Visibility.Collapsed);
-                _Main.ShowSearch(false);
+                _Main.SetPluginView("", Visibility.Collapsed);
+                _Main.ShowCommand(false);
             }
             catch
             {
                 MessageBox.Show("无法启动浏览器，请尝试手动打开！");
             }
+        }
+
+        private void SelectPrev()
+        {
+            var cnt = LbResult.Items.Count;
+            if (cnt < 2)
+            {
+                return;
+            }
+
+            var idx = LbResult.SelectedIndex;
+            idx -= 1;
+            if (idx < 0)
+            {
+                idx = cnt - 1;
+            }
+
+            LbResult.SelectedIndex = idx;
+            LbResult.ScrollIntoView(LbResult.Items[idx]);
+        }
+
+        private void SelectNext()
+        {
+            var cnt = LbResult.Items.Count;
+            if (cnt < 2)
+            {
+                return;
+            }
+
+            var idx = LbResult.SelectedIndex;
+            idx += 1;
+            if (idx >= cnt)
+            {
+                idx = 0;
+            }
+
+            LbResult.SelectedIndex = idx;
+            LbResult.ScrollIntoView(LbResult.Items[idx]);
         }
     }
 }

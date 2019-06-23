@@ -120,6 +120,9 @@
       <DependentUpon>Upgrade.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ur\UserInfo.cs" />
+    <Compile Include="WinApi\KeyboardHook.cs" />
+    <Compile Include="WinApi\KeyHelper.cs" />
+    <Compile Include="WinApi\Win32Api.cs" />
     <Page Include="About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

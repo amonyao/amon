@@ -1,4 +1,7 @@
 ﻿using Me.Amon.Dao;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Me.Amon.FilExt
 {
@@ -14,13 +17,41 @@ namespace Me.Amon.FilExt
             _User = user;
         }
 
-        public void Input(params string[] args)
+        public void Meta_KeyDown(KeyEventArgs e)
         {
         }
 
-        public void Enter(params string[] args)
+        public void Text_Changed(TextChangedEventArgs e) { }
+
+        public void Drag_Enter(DragEventArgs e)
         {
-            if (args == null || args.Length < 1)
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effects = DragDropEffects.Link;
+            }
+            else
+            {
+                e.Effects = DragDropEffects.None;
+            }
+        }
+
+        public void Drag_Droped(DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                return;
+            }
+
+            var data = e.Data.GetData(DataFormats.FileDrop);
+            if (data == null || !(data is string[]))
+            {
+                return;
+            }
+
+            e.Handled = true;
+
+            var list = (string[])data;
+            if (list == null || list.Length < 1)
             {
                 return;
             }
@@ -32,7 +63,7 @@ namespace Me.Amon.FilExt
             }
 
             var window = new FileList();
-            window.Init(rules, args);
+            window.Init(rules, list);
             window.Show();
         }
         #endregion

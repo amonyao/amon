@@ -762,9 +762,8 @@ namespace Me.Amon.FilExp.Editor
 
                 _Docs.Add(doc);
             }
-            catch (Exception exp)
+            catch (Exception)
             {
-                ;
             }
         }
         #endregion

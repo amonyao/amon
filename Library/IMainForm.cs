@@ -5,20 +5,7 @@ namespace Me.Amon
 {
     public interface IMainForm
     {
-        /// <summary>
-        /// 追加用户控件
-        /// </summary>
-        /// <param name="control"></param>
-        void AddUserView(UserControl control);
-
-        /// <summary>
-        /// 显示用户控件
-        /// </summary>
-        /// <param name="key"></param>
-        void ShowUserView(string key, Visibility visibility);
-
-        void ShowAppIcon(string icon);
-
+        #region 窗口相关
         /// <summary>
         /// 显示窗口
         /// </summary>
@@ -28,8 +15,29 @@ namespace Me.Amon
         /// 隐藏窗口
         /// </summary>
         void HideWindow();
+        #endregion
 
-        void ShowSearch(bool visible);
+        #region 命令相关
+        void ShowCommand(bool visible);
+
+        string CommandText { get; set; }
+        #endregion
+
+        #region 插件相关
+        /// <summary>
+        /// 追加用户控件
+        /// </summary>
+        /// <param name="control"></param>
+        void AddPluginView(UserControl control);
+
+        /// <summary>
+        /// 显示用户控件
+        /// </summary>
+        /// <param name="key"></param>
+        void SetPluginView(string key, Visibility visibility);
+
+        void ShowPluginIcon(string icon);
+        #endregion
 
         /// <summary>
         /// 关于
